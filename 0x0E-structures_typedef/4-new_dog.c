@@ -29,13 +29,13 @@ char *_strdup(char *str)
 }
 
 /**
-* new_dog - create a new dog
-* @name: the new dog's name
-* @age: the new dog's age
-* @owner: the new dog's owner
-*
-* Return: a pointer to the new dog, or NULL if memory allocation fails
-*/
+ * new_dog - create a new dog
+ * @name: the new dog's name
+ * @age: the new dog's age
+ * @owner: the new dog's owner
+ *
+ * Return: a pointer to the new dog, or NULL if memory allocation fails
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
@@ -56,20 +56,20 @@ dog_t *new_dog(char *name, float age, char *owner)
 	else
 		d->name = NULL;
 
-		d->age = age;
+	d->age = age;
 
-		if (owner)
+	if (owner)
+	{
+		d->owner = _strdup(owner);
+		if (!(d->owner))
 		{
-			d->owner = _strdup(owner);
-			if (!(d->owner))
-			{
-				free(d->name);
-				free(d);
-				return (NULL);
-			}
+			free(d->name);
+			free(d);
+			return (NULL);
 		}
-		else
-			d->owner = NULL;
+	}
+	else
+		d->owner = NULL;
 
-		return (d);
-i}
+	return (d);
+}
