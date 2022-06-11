@@ -2,6 +2,7 @@
 
 def check_palindrome(v):
      reverse = v[::-1]
+
      if (v == reverse):
         return True
     return False
